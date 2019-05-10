@@ -19,13 +19,26 @@ function handleAuthChanges() {
 function handleSignIn() {
   const email= document.getElementById("email").value
   const pass = document.getElementById("password").value
-  console.log("Sign in" + email)
+  console.log(email)
+  firebase.auth().signInWithEmailAndPassword(email, pass).catch(function (error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    alert(errorMessage);
+  });
 }
 
 function handleSignUp() {
   const email = document.getElementById("email").value
   const pass = document.getElementById("password").value
-  console.log("Sign up" + email)
+  firebase.auth().createUserWithEmailAndPassword(email, pass).catch(function (error) {
+    // Handle Errors here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+
+    alert(errorMessage);
+  });
 }
 
 window.onload = () => {
